@@ -25,8 +25,7 @@ private extension UserRouteController {
         return try User.query(on: request).filter(\.email == newUser.email).first().flatMap { existingUser in
             guard existingUser == nil else { throw Abort(.badRequest, reason: "a user with this email already exists" , identifier: nil) }
             
-            //TODO: Validate the user
-            
+            try newUser.validate()
             return try newUser.user(with: request.make(BCryptDigest.self)).save(on: request).transform(to: .created)
         }
     }
