@@ -11,8 +11,6 @@ import Fluent
 import FluentSQLite
 import Crypto
 
-
-
 struct AuthenticationController {
     
     //MARK: Actions

@@ -11,16 +11,16 @@ import Fluent
 import FluentSQLite
 import Crypto
 
-public struct RefreshToken: Content, SQLiteUUIDModel, Migration {
-    public typealias Token = String
+struct RefreshToken: Content, SQLiteUUIDModel, Migration {
+    typealias Token = String
     
     //MARK: Properties
-    public var id: UUID?
-    public let tokenString: Token
-    public let userID: UUID
+    var id: UUID?
+    let tokenString: Token
+    let userID: UUID
     
     //MARK: Initializers
-    public init(userID: UUID) throws {
+    init(userID: UUID) throws {
         self.tokenString = try CryptoRandom().generateData(count: 32).base64URLEncodedString()
         self.userID = userID
     }

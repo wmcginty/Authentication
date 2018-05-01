@@ -8,15 +8,15 @@
 import Foundation
 import Vapor
 
-public struct AuthenticationContainer: Content {
+struct AuthenticationContainer: Content {
     
     //MARK: Properties
-    public let accessToken: AccessToken.Token
-    public let expiresIn: TimeInterval
-    public let refreshToken: RefreshToken.Token
+    let accessToken: AccessToken.Token
+    let expiresIn: TimeInterval
+    let refreshToken: RefreshToken.Token
     
     //MARK: Initializers
-    public init(accessToken: AccessToken, refreshToken: RefreshToken) {
+    init(accessToken: AccessToken, refreshToken: RefreshToken) {
         self.accessToken = accessToken.tokenString
         self.expiresIn = AccessToken.accessTokenExpirationInterval //Not honored, just an estimate
         self.refreshToken = refreshToken.tokenString
@@ -30,8 +30,8 @@ public struct AuthenticationContainer: Content {
     }
 }
 
-public struct RefreshTokenContainer: Content {
+struct RefreshTokenContainer: Content {
     
     //MARK: Properties
-    public let refreshToken: RefreshToken.Token
+    let refreshToken: RefreshToken.Token
 }

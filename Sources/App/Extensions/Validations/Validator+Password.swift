@@ -17,12 +17,12 @@ fileprivate struct PasswordValidator: ValidatorType {
     private var lowercaseValidator: Validator<String> = Validator.containsCharacterFrom(set: .lowercaseLetters)
     private var uppercaseValidator: Validator<String> = Validator.containsCharacterFrom(set: .uppercaseLetters)
     
-    public var validatorReadable: String { return "a valid password of 8 or more ASCII characters" }
+    var validatorReadable: String { return "a valid password of 8 or more ASCII characters" }
     
     //MARK: Initializers
-    public init() {}
+    init() {}
     
-    public func validate(_ s: String) throws {
+    func validate(_ s: String) throws {
         try asciiValidator.validate(s)
         try lengthValidator.validate(s)
         try numberValidator.validate(s)
@@ -36,14 +36,14 @@ fileprivate struct ContainsCharacterFromSetValidator: ValidatorType {
     //MARK: Properties
     private let characterSet: CharacterSet
     
-    public var validatorReadable: String { return "a valid string consisting of at least one character from a given set" }
+    var validatorReadable: String { return "a valid string consisting of at least one character from a given set" }
     
     //MARK: Initializers
-    public init(characterSet: CharacterSet) {
+    init(characterSet: CharacterSet) {
         self.characterSet = characterSet
     }
     
-    public func validate(_ s: String) throws {
+    func validate(_ s: String) throws {
         guard let _ = s.rangeOfCharacter(from: characterSet) else { throw BasicValidationError("does not contain a member of character set: \(characterSet.description)") }
     }
 }
@@ -51,12 +51,12 @@ fileprivate struct ContainsCharacterFromSetValidator: ValidatorType {
 extension Validator where T == String {
     
     /// Validates that a 'String' is a functioning password - 8+ ascii characters, 1 uppercase, 1 lowercase, 1 number
-    public static var password: Validator<T> {
+     static var password: Validator<T> {
         return PasswordValidator().validator()
     }
     
     /// Validates that a single character in a `String` are in the supplied `CharacterSet`.
-    public static func containsCharacterFrom(set: CharacterSet) -> Validator<T> {
+     static func containsCharacterFrom(set: CharacterSet) -> Validator<T> {
         return ContainsCharacterFromSetValidator(characterSet: set).validator()
     }
 }

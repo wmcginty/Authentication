@@ -11,12 +11,12 @@ import Validation
 fileprivate struct PasswordConfirmationValidator: ValidatorType {
     
     //MARK: Properties
-    public var validatorReadable: String { return "a valid new user in which the password and confirmation match" }
+    var validatorReadable: String { return "a valid new user in which the password and confirmation match" }
     
     //MARK: Initializers
-    public init() { }
+    init() { }
     
-    public func validate(_ s: NewUser) throws {
+    func validate(_ s: NewUser) throws {
         guard s.password == s.passwordConfirmation else { throw BasicValidationError("password and password_confirmation do not match.") }
     }
 }

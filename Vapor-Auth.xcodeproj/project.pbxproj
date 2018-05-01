@@ -25,6 +25,7 @@
 		B47D83CB2097FEC9002ACF09 /* Validator+Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47D83C92097FEC8002ACF09 /* Validator+Password.swift */; };
 		B47D83CE20980005002ACF09 /* Validator+PasswordConfirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47D83CD20980005002ACF09 /* Validator+PasswordConfirmation.swift */; };
 		B47D83D2209802CC002ACF09 /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47D83D1209802CC002ACF09 /* AuthenticationController.swift */; };
+		B47D83D520980AAE002ACF09 /* ProtectedRoutesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47D83D420980AAE002ACF09 /* ProtectedRoutesController.swift */; };
 		OBJ_1045 /* AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* AppTests.swift */; };
 		OBJ_1047 /* App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Vapor-Auth::App::Product" /* App.framework */; };
 		OBJ_1048 /* Authentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Auth::Authentication::Product" /* Authentication.framework */; };
@@ -5173,6 +5174,7 @@
 		B47D83C92097FEC8002ACF09 /* Validator+Password.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Validator+Password.swift"; sourceTree = "<group>"; };
 		B47D83CD20980005002ACF09 /* Validator+PasswordConfirmation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Validator+PasswordConfirmation.swift"; sourceTree = "<group>"; };
 		B47D83D1209802CC002ACF09 /* AuthenticationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
+		B47D83D420980AAE002ACF09 /* ProtectedRoutesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectedRoutesController.swift; sourceTree = "<group>"; };
 		"Console::Command::Product" /* Command.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Command.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Console::Console::Product" /* Console.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Console.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Console::Logging::Product" /* Logging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Logging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -6796,6 +6798,14 @@
 			path = Authentication;
 			sourceTree = "<group>";
 		};
+		B47D83D320980A98002ACF09 /* Protected */ = {
+			isa = PBXGroup;
+			children = (
+				B47D83D420980AAE002ACF09 /* ProtectedRoutesController.swift */,
+			);
+			path = Protected;
+			sourceTree = "<group>";
+		};
 		OBJ_10 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -6975,6 +6985,7 @@
 		OBJ_16 /* Routes */ = {
 			isa = PBXGroup;
 			children = (
+				B47D83D320980A98002ACF09 /* Protected */,
 				B47D83D0209802C2002ACF09 /* Authentication */,
 				OBJ_17 /* AuthenticationRouteController.swift */,
 				B47D83C52097FB99002ACF09 /* UserRouteController.swift */,
@@ -11869,6 +11880,7 @@
 				OBJ_904 /* RefreshToken.swift in Sources */,
 				OBJ_905 /* User.swift in Sources */,
 				OBJ_906 /* AuthenticationRouteController.swift in Sources */,
+				B47D83D520980AAE002ACF09 /* ProtectedRoutesController.swift in Sources */,
 				B47D83D2209802CC002ACF09 /* AuthenticationController.swift in Sources */,
 				B47D83C62097FB99002ACF09 /* UserRouteController.swift in Sources */,
 				OBJ_907 /* boot.swift in Sources */,

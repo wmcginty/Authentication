@@ -1,5 +1,6 @@
 import Vapor
 import FluentSQLite
+import Authentication
 
 /// Called before your application initializes.
 ///
@@ -21,6 +22,9 @@ public func configure(
     
     // Configure Fluents SQL provider
     try services.register(FluentSQLiteProvider())
+    
+    // Configure the authentication provider
+    try services.register(AuthenticationProvider())
     
     // Configure our database
     var databaseConfig = DatabasesConfig()

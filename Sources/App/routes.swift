@@ -12,4 +12,7 @@ public func routes(_ router: Router) throws {
     
     let userRouteController = UserRouteController()
     try userRouteController.boot(router: router)
+    
+    let protectedRouteController = ProtectedRoutesController()
+    try protectedRouteController.boot(router: router)
 }
