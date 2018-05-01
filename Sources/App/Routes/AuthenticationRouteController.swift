@@ -18,6 +18,10 @@ struct AuthenticationRouteController: RouteCollection {
     func boot(router: Router) throws {
         let group = router.grouped("api", "token")
         group.post(RefreshTokenContainer.self, at: "refresh", use: refreshAccessTokenHandler)
+        
+        let basicAuthMiddleware = User.basicAuthMiddleware(using: BCrypt)
+        let basicAuthGroup = group.grouped(basicAuthMiddleware)
+        basicAuthGroup.post(UserEmailContainer.self, at: "revoke", use: accessTokenRevocationhandler)
     }
 }
 
@@ -26,6 +30,10 @@ private extension AuthenticationRouteController {
     
     func refreshAccessTokenHandler(_ request: Request, container: RefreshTokenContainer) throws -> Future<AuthenticationContainer> {
         return try authController.authenticationContainer(for: container.refreshToken, on: request)
+    }
+    
+    func accessTokenRevocationhandler(_ request: Request, container: UserEmailContainer) throws -> Future<HTTPResponseStatus> {
+        return try authController.revokeTokens(forEmail: container.email, on: request).transform(to: .noContent)
     }
 }
 

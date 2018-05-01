@@ -28,6 +28,13 @@ struct AuthenticationController {
             }
         }
     }
+    
+    func revokeTokens(forEmail email: String, on connection: DatabaseConnectable) throws -> Future<Void> {
+        return try User.query(on: connection).filter(\.email == email).first().flatMap { user in
+            guard let user = user else { return Future.map(on: connection) { Void() } }
+            return try self.removeAllTokens(for: user, on: connection)
+        }
+    }
 }
 
 //MARK: Helper

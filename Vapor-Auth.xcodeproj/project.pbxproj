@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		B465FB1D2098156500E14BC3 /* UserEmailContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B465FB1C2098156500E14BC3 /* UserEmailContainer.swift */; };
 		B47D83C62097FB99002ACF09 /* UserRouteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47D83C52097FB99002ACF09 /* UserRouteController.swift */; };
 		B47D83CB2097FEC9002ACF09 /* Validator+Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47D83C92097FEC8002ACF09 /* Validator+Password.swift */; };
 		B47D83CE20980005002ACF09 /* Validator+PasswordConfirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47D83CD20980005002ACF09 /* Validator+PasswordConfirmation.swift */; };
@@ -5170,6 +5171,7 @@
 
 /* Begin PBXFileReference section */
 		"Auth::Authentication::Product" /* Authentication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Authentication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B465FB1C2098156500E14BC3 /* UserEmailContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEmailContainer.swift; sourceTree = "<group>"; };
 		B47D83C52097FB99002ACF09 /* UserRouteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRouteController.swift; sourceTree = "<group>"; };
 		B47D83C92097FEC8002ACF09 /* Validator+Password.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Validator+Password.swift"; sourceTree = "<group>"; };
 		B47D83CD20980005002ACF09 /* Validator+PasswordConfirmation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Validator+PasswordConfirmation.swift"; sourceTree = "<group>"; };
@@ -6805,6 +6807,7 @@
 				OBJ_11 /* AccessToken.swift */,
 				OBJ_14 /* RefreshToken.swift */,
 				OBJ_12 /* AuthenticationContainer.swift */,
+				B465FB1C2098156500E14BC3 /* UserEmailContainer.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -11866,6 +11869,7 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_901 /* AccessToken.swift in Sources */,
+				B465FB1D2098156500E14BC3 /* UserEmailContainer.swift in Sources */,
 				OBJ_902 /* AuthenticationContainer.swift in Sources */,
 				OBJ_903 /* NewUser.swift in Sources */,
 				OBJ_904 /* RefreshToken.swift in Sources */,
