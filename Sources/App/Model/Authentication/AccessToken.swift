@@ -9,6 +9,7 @@ import Foundation
 import Vapor
 import Fluent
 import FluentSQLite
+import Crypto
 
 public struct AccessToken: Content, SQLiteUUIDModel, Migration {
     public typealias Token = String
@@ -23,8 +24,8 @@ public struct AccessToken: Content, SQLiteUUIDModel, Migration {
     public let expiryTime: Date
     
     //MARK: Initializers
-    public init(userID: UUID) {
-        self.tokenString = UUID().uuidString
+    public init(userID: UUID) throws {
+        self.tokenString = try CryptoRandom().generateData(count: 32).base64URLEncodedString()
         self.userID = userID
         self.expiryTime = Date().addingTimeInterval(AccessToken.accessTokenExpirationInterval)
     }

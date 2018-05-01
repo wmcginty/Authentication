@@ -18,8 +18,15 @@ public struct AuthenticationContainer: Content {
     //MARK: Initializers
     public init(accessToken: AccessToken, refreshToken: RefreshToken) {
         self.accessToken = accessToken.tokenString
-        self.expiresIn = AccessToken.accessTokenExpirationInterval
+        self.expiresIn = AccessToken.accessTokenExpirationInterval //Not honored, just an estimate
         self.refreshToken = refreshToken.tokenString
+    }
+    
+    //MARK: Codable
+    private enum CodingKeys: String, CodingKey {
+        case accessToken = "access_token"
+        case expiresIn = "expires_in"
+        case refreshToken = "refresh_token"
     }
 }
 

@@ -9,7 +9,6 @@ import Foundation
 import Vapor
 import Validation
 import Authentication
-import Crypto
 
 struct NewUser: Content {
     
@@ -23,10 +22,6 @@ struct NewUser: Content {
     private enum CodingKeys: String, CodingKey {
         case email, password
         case passwordConfirmation = "password_confirmation"
-    }
-    
-    func user(with digest: BCryptDigest) throws -> User {
-        return try User(id: nil, email: email, password: digest.hash(password))
     }
 }
 

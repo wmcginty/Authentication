@@ -62,30 +62,4 @@ struct AuthenticationRouteController: RouteCollection {
 //    }
 //}
 //
-////MARK: Helper
-//private extension AuthenticationController {
-//    
-//    func existingUser(withEmail email: String, on connection: DatabaseConnectable) throws -> Future<User?> {
-//        return try User.query(on: connection).filter(\.email == email).first()
-//    }
-//    
-//    func accessToken(for userID: UUID, on connection: DatabaseConnectable) -> Future<AccessToken> {
-//        return AccessToken(userID: userID).save(on: connection)
-//    }
-//    
-//    func accessToken(for refreshToken: RefreshToken, on connection: DatabaseConnectable) -> Future<AccessToken> {
-//        return AccessToken(userID: refreshToken.userID).save(on: connection)
-//    }
-//    
-//    func refreshToken(for userID: UUID, on connection: DatabaseConnectable) -> Future<RefreshToken> {
-//        return RefreshToken(userID: userID).save(on: connection)
-//    }
-//    
-//    //MARK: Token Cleanup
-//    func removeAllTokens(matchingUserID userID: UUID, on connection: DatabaseConnectable) throws -> Future<Void> {
-//        let accessTokens = try AccessToken.query(on: connection).filter(\.userID == userID).delete()
-//        let refreshToken = try RefreshToken.query(on: connection).filter(\.userID == userID).delete()
-//        
-//        return map(to: Void.self, accessTokens, refreshToken) { _, _ in Void() }
-//    }
-//}
+

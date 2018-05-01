@@ -24,6 +24,7 @@
 		B47D83C62097FB99002ACF09 /* UserRouteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47D83C52097FB99002ACF09 /* UserRouteController.swift */; };
 		B47D83CB2097FEC9002ACF09 /* Validator+Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47D83C92097FEC8002ACF09 /* Validator+Password.swift */; };
 		B47D83CE20980005002ACF09 /* Validator+PasswordConfirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47D83CD20980005002ACF09 /* Validator+PasswordConfirmation.swift */; };
+		B47D83D2209802CC002ACF09 /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47D83D1209802CC002ACF09 /* AuthenticationController.swift */; };
 		OBJ_1045 /* AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* AppTests.swift */; };
 		OBJ_1047 /* App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Vapor-Auth::App::Product" /* App.framework */; };
 		OBJ_1048 /* Authentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Auth::Authentication::Product" /* Authentication.framework */; };
@@ -1173,7 +1174,7 @@
 		OBJ_903 /* NewUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* NewUser.swift */; };
 		OBJ_904 /* RefreshToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* RefreshToken.swift */; };
 		OBJ_905 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* User.swift */; };
-		OBJ_906 /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* AuthenticationController.swift */; };
+		OBJ_906 /* AuthenticationRouteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* AuthenticationRouteController.swift */; };
 		OBJ_907 /* boot.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* boot.swift */; };
 		OBJ_908 /* configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* configure.swift */; };
 		OBJ_909 /* routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* routes.swift */; };
@@ -5171,6 +5172,7 @@
 		B47D83C52097FB99002ACF09 /* UserRouteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRouteController.swift; sourceTree = "<group>"; };
 		B47D83C92097FEC8002ACF09 /* Validator+Password.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Validator+Password.swift"; sourceTree = "<group>"; };
 		B47D83CD20980005002ACF09 /* Validator+PasswordConfirmation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Validator+PasswordConfirmation.swift"; sourceTree = "<group>"; };
+		B47D83D1209802CC002ACF09 /* AuthenticationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
 		"Console::Command::Product" /* Command.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Command.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Console::Console::Product" /* Console.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Console.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Console::Logging::Product" /* Logging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Logging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -5247,7 +5249,7 @@
 		OBJ_167 /* DatabaseSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSchema.swift; sourceTree = "<group>"; };
 		OBJ_168 /* SchemaAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemaAction.swift; sourceTree = "<group>"; };
 		OBJ_169 /* SchemaBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemaBuilder.swift; sourceTree = "<group>"; };
-		OBJ_17 /* AuthenticationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
+		OBJ_17 /* AuthenticationRouteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRouteController.swift; sourceTree = "<group>"; };
 		OBJ_170 /* SchemaCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemaCreator.swift; sourceTree = "<group>"; };
 		OBJ_171 /* SchemaField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemaField.swift; sourceTree = "<group>"; };
 		OBJ_172 /* SchemaSupporting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemaSupporting.swift; sourceTree = "<group>"; };
@@ -6777,14 +6779,30 @@
 			path = Validations;
 			sourceTree = "<group>";
 		};
+		B47D83CF2098016A002ACF09 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_13 /* NewUser.swift */,
+				OBJ_15 /* User.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		B47D83D0209802C2002ACF09 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				B47D83D1209802CC002ACF09 /* AuthenticationController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		OBJ_10 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				B47D83CF2098016A002ACF09 /* User */,
 				OBJ_11 /* AccessToken.swift */,
-				OBJ_12 /* AuthenticationContainer.swift */,
-				OBJ_13 /* NewUser.swift */,
 				OBJ_14 /* RefreshToken.swift */,
-				OBJ_15 /* User.swift */,
+				OBJ_12 /* AuthenticationContainer.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -6957,7 +6975,8 @@
 		OBJ_16 /* Routes */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_17 /* AuthenticationController.swift */,
+				B47D83D0209802C2002ACF09 /* Authentication */,
+				OBJ_17 /* AuthenticationRouteController.swift */,
 				B47D83C52097FB99002ACF09 /* UserRouteController.swift */,
 			);
 			path = Routes;
@@ -11849,7 +11868,8 @@
 				OBJ_903 /* NewUser.swift in Sources */,
 				OBJ_904 /* RefreshToken.swift in Sources */,
 				OBJ_905 /* User.swift in Sources */,
-				OBJ_906 /* AuthenticationController.swift in Sources */,
+				OBJ_906 /* AuthenticationRouteController.swift in Sources */,
+				B47D83D2209802CC002ACF09 /* AuthenticationController.swift in Sources */,
 				B47D83C62097FB99002ACF09 /* UserRouteController.swift in Sources */,
 				OBJ_907 /* boot.swift in Sources */,
 				B47D83CE20980005002ACF09 /* Validator+PasswordConfirmation.swift in Sources */,
