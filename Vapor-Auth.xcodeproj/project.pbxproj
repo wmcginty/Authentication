@@ -6798,14 +6798,6 @@
 			path = Authentication;
 			sourceTree = "<group>";
 		};
-		B47D83D320980A98002ACF09 /* Protected */ = {
-			isa = PBXGroup;
-			children = (
-				B47D83D420980AAE002ACF09 /* ProtectedRoutesController.swift */,
-			);
-			path = Protected;
-			sourceTree = "<group>";
-		};
 		OBJ_10 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -6985,10 +6977,10 @@
 		OBJ_16 /* Routes */ = {
 			isa = PBXGroup;
 			children = (
-				B47D83D320980A98002ACF09 /* Protected */,
 				B47D83D0209802C2002ACF09 /* Authentication */,
 				OBJ_17 /* AuthenticationRouteController.swift */,
 				B47D83C52097FB99002ACF09 /* UserRouteController.swift */,
+				B47D83D420980AAE002ACF09 /* ProtectedRoutesController.swift */,
 			);
 			path = Routes;
 			sourceTree = "<group>";
@@ -7949,7 +7941,7 @@
 			path = KeyedCache;
 			sourceTree = "<group>";
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -7960,7 +7952,6 @@
 				OBJ_28 /* Dependencies */,
 				OBJ_849 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_505 /* Log */ = {
@@ -10705,7 +10696,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_849 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

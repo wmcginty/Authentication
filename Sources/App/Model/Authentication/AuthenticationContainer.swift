@@ -34,4 +34,8 @@ struct RefreshTokenContainer: Content {
     
     //MARK: Properties
     let refreshToken: RefreshToken.Token
+    
+    private enum CodingKeys: String, CodingKey {
+        case refreshToken = "refresh_token"
+    }
 }
