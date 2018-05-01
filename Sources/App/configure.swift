@@ -23,7 +23,7 @@ public func configure(
     try services.register(FluentSQLiteProvider())
     
     // Configure our database
-    var databaseConfig = DatabaseConfig()
+    var databaseConfig = DatabasesConfig()
     let db = try SQLiteDatabase(storage: .file(path: "\(directoryConfig.workDir)auth.db"))
     databaseConfig.add(database: db, as: .sqlite)
     services.register(databaseConfig)

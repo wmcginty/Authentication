@@ -8,5 +8,8 @@ import Vapor
 public func routes(_ router: Router) throws {
     
     let authRouteController = AuthenticationRouteController()
-    authRouteController.boot(router: router)
+    try authRouteController.boot(router: router)
+    
+    let userRouteController = UserRouteController()
+    try userRouteController.boot(router: router)
 }
