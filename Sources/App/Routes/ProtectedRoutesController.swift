@@ -28,11 +28,11 @@ struct ProtectedRoutesController: RouteCollection {
 //MARK: Helper
 private extension ProtectedRoutesController {
     
-    func basicAuthRouteHandler(_ request: Request) throws -> HTTPResponseStatus {
-        return .ok
+    func basicAuthRouteHandler(_ request: Request) throws -> User {
+        return try request.requireAuthenticated(User.self)
     }
     
-    func tokenAuthRouteHandler(_ request: Request) throws -> HTTPResponseStatus {
-        return .ok
+    func tokenAuthRouteHandler(_ request: Request) throws -> User {
+        return try request.requireAuthenticated(User.self)
     }
 }
