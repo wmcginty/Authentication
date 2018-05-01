@@ -6766,21 +6766,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B465FB1E2098180200E14BC3 /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_12 /* AuthenticationContainer.swift */,
+				B465FB1C2098156500E14BC3 /* UserEmailContainer.swift */,
+			);
+			path = Container;
+			sourceTree = "<group>";
+		};
+		B465FB1F2098180D00E14BC3 /* Token */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_11 /* AccessToken.swift */,
+				OBJ_14 /* RefreshToken.swift */,
+			);
+			path = Token;
+			sourceTree = "<group>";
+		};
 		B47D83C72097FE87002ACF09 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				B47D83C82097FE8C002ACF09 /* Validations */,
+				B47D83C82097FE8C002ACF09 /* Validation */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		B47D83C82097FE8C002ACF09 /* Validations */ = {
+		B47D83C82097FE8C002ACF09 /* Validation */ = {
 			isa = PBXGroup;
 			children = (
 				B47D83C92097FEC8002ACF09 /* Validator+Password.swift */,
 				B47D83CD20980005002ACF09 /* Validator+PasswordConfirmation.swift */,
 			);
-			path = Validations;
+			path = Validation;
 			sourceTree = "<group>";
 		};
 		B47D83CF2098016A002ACF09 /* User */ = {
@@ -6803,11 +6821,9 @@
 		OBJ_10 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				B465FB1E2098180200E14BC3 /* Container */,
+				B465FB1F2098180D00E14BC3 /* Token */,
 				B47D83CF2098016A002ACF09 /* User */,
-				OBJ_11 /* AccessToken.swift */,
-				OBJ_14 /* RefreshToken.swift */,
-				OBJ_12 /* AuthenticationContainer.swift */,
-				B465FB1C2098156500E14BC3 /* UserEmailContainer.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
