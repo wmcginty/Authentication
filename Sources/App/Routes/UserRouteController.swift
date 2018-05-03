@@ -9,6 +9,7 @@ import Vapor
 import Fluent
 import FluentSQLite
 import Crypto
+import Logging
 
 class UserRouteController: RouteCollection {
     
@@ -40,7 +41,12 @@ private extension UserRouteController {
             guard existingUser == nil else { throw Abort(.badRequest, reason: "a user with this email already exists" , identifier: nil) }
             
             try newUser.validate()
+            
             return try newUser.user(with: request.make(BCryptDigest.self)).save(on: request).flatMap { user in
+                
+                let logger = try request.make(Logger.self)
+                logger.warning("New user created: \(user.email)")
+                
                 return try self.authController.authenticationContainer(for: user, on: request)
             }
         }
