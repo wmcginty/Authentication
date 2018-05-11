@@ -1,4 +1,0 @@
-module CNIOZlib {
-    umbrella "/Users/willmcginty/Developer/Open Source/Vapor-Auth/.build/checkouts/swift-nio.git-3108475404973543938/Sources/CNIOZlib/include"
-    export *
-}
