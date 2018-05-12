@@ -8,8 +8,8 @@
 import Foundation
 import Vapor
 import Fluent
-import FluentSQLite
 import Crypto
+import Authentication
 
 struct AuthenticationRouteController: RouteCollection {
     
@@ -20,7 +20,8 @@ struct AuthenticationRouteController: RouteCollection {
         group.post(RefreshTokenContainer.self, at: "refresh", use: refreshAccessTokenHandler)
         
         let basicAuthMiddleware = User.basicAuthMiddleware(using: BCrypt)
-        let basicAuthGroup = group.grouped(basicAuthMiddleware)
+        let guardAuthMiddleware = User.guardAuthMiddleware()
+        let basicAuthGroup = group.grouped([basicAuthMiddleware, guardAuthMiddleware])
         basicAuthGroup.post(UserEmailContainer.self, at: "revoke", use: accessTokenRevocationhandler)
     }
 }

@@ -16,11 +16,12 @@ struct ProtectedRoutesController: RouteCollection {
         let group = router.grouped("api", "protected")
         
         let basicAuthMiddleware = User.basicAuthMiddleware(using: BCrypt)
-        let basicAuthGroup = group.grouped(basicAuthMiddleware)
+        let guardAuthMiddleware = User.guardAuthMiddleware()
+        let basicAuthGroup = group.grouped([basicAuthMiddleware, guardAuthMiddleware])
         basicAuthGroup.get("basic", use: basicAuthRouteHandler)
         
         let tokenAuthMiddleware = User.tokenAuthMiddleware()
-        let tokenAuthGroup = group.grouped(tokenAuthMiddleware)
+        let tokenAuthGroup = group.grouped([tokenAuthMiddleware, guardAuthMiddleware])
         tokenAuthGroup.get("token", use: tokenAuthRouteHandler)
     }
 }

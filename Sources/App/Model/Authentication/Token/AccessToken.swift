@@ -7,7 +7,6 @@
 
 import Foundation
 import Vapor
-import Fluent
 import FluentSQLite
 import Crypto
 import Authentication

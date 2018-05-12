@@ -14,51 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "swift-nio::CNIOHTTPParser"
-               BuildableName = "CNIOHTTPParser.framework"
-               BlueprintName = "CNIOHTTPParser"
-               ReferencedContainer = "container:VaporAuth.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "swift-nio::CNIOAtomics"
-               BuildableName = "CNIOAtomics.framework"
-               BlueprintName = "CNIOAtomics"
-               ReferencedContainer = "container:VaporAuth.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DatabaseKit::DatabaseKit"
-               BuildableName = "DatabaseKit.framework"
-               BlueprintName = "DatabaseKit"
-               ReferencedContainer = "container:VaporAuth.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Console::Logging"
-               BuildableName = "Logging.framework"
-               BlueprintName = "Logging"
+               BlueprintIdentifier = "VaporAuth::Run"
+               BuildableName = "Run"
+               BlueprintName = "Run"
                ReferencedContainer = "container:VaporAuth.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -84,9 +42,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Vapor::Vapor"
-               BuildableName = "Vapor.framework"
-               BlueprintName = "Vapor"
+               BlueprintIdentifier = "SQLite::CSQLite"
+               BuildableName = "CSQLite.framework"
+               BlueprintName = "CSQLite"
                ReferencedContainer = "container:VaporAuth.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -98,9 +56,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Service::Service"
-               BuildableName = "Service.framework"
-               BlueprintName = "Service"
+               BlueprintIdentifier = "Crypto::libbcrypt"
+               BuildableName = "libbcrypt.framework"
+               BlueprintName = "libbcrypt"
                ReferencedContainer = "container:VaporAuth.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -112,9 +70,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "VaporAuth::App"
-               BuildableName = "App.framework"
-               BlueprintName = "App"
+               BlueprintIdentifier = "Multipart::Multipart"
+               BuildableName = "Multipart.framework"
+               BlueprintName = "Multipart"
                ReferencedContainer = "container:VaporAuth.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -140,79 +98,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "URLEncodedForm::URLEncodedForm"
-               BuildableName = "URLEncodedForm.framework"
-               BlueprintName = "URLEncodedForm"
-               ReferencedContainer = "container:VaporAuth.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Fluent::Fluent"
-               BuildableName = "Fluent.framework"
-               BlueprintName = "Fluent"
-               ReferencedContainer = "container:VaporAuth.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Crypto::Random"
-               BuildableName = "Random.framework"
-               BlueprintName = "Random"
-               ReferencedContainer = "container:VaporAuth.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Core::Bits"
-               BuildableName = "Bits.framework"
-               BlueprintName = "Bits"
-               ReferencedContainer = "container:VaporAuth.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Core::Debugging"
-               BuildableName = "Debugging.framework"
-               BlueprintName = "Debugging"
-               ReferencedContainer = "container:VaporAuth.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "HTTP::HTTP"
-               BuildableName = "HTTP.framework"
-               BlueprintName = "HTTP"
+               BlueprintIdentifier = "Core::Async"
+               BuildableName = "Async.framework"
+               BlueprintName = "Async"
                ReferencedContainer = "container:VaporAuth.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -238,93 +126,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FluentSQLite::FluentSQLite"
-               BuildableName = "FluentSQLite.framework"
-               BlueprintName = "FluentSQLite"
-               ReferencedContainer = "container:VaporAuth.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "TemplateKit::TemplateKit"
-               BuildableName = "TemplateKit.framework"
-               BlueprintName = "TemplateKit"
-               ReferencedContainer = "container:VaporAuth.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Core::Async"
-               BuildableName = "Async.framework"
-               BlueprintName = "Async"
-               ReferencedContainer = "container:VaporAuth.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SQLite::SQLite"
-               BuildableName = "SQLite.framework"
-               BlueprintName = "SQLite"
-               ReferencedContainer = "container:VaporAuth.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Fluent::FluentSQL"
-               BuildableName = "FluentSQL.framework"
-               BlueprintName = "FluentSQL"
-               ReferencedContainer = "container:VaporAuth.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SQL::SQL"
-               BuildableName = "SQL.framework"
-               BlueprintName = "SQL"
-               ReferencedContainer = "container:VaporAuth.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Validation::Validation"
-               BuildableName = "Validation.framework"
-               BlueprintName = "Validation"
+               BlueprintIdentifier = "swift-nio::CNIODarwin"
+               BuildableName = "CNIODarwin.framework"
+               BlueprintName = "CNIODarwin"
                ReferencedContainer = "container:VaporAuth.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -350,9 +154,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Core::Core"
-               BuildableName = "Core.framework"
-               BlueprintName = "Core"
+               BlueprintIdentifier = "DatabaseKit::DatabaseKit"
+               BuildableName = "DatabaseKit.framework"
+               BlueprintName = "DatabaseKit"
                ReferencedContainer = "container:VaporAuth.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -364,9 +168,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "swift-nio::NIOFoundationCompat"
-               BuildableName = "NIOFoundationCompat.framework"
-               BlueprintName = "NIOFoundationCompat"
+               BlueprintIdentifier = "Service::Service"
+               BuildableName = "Service.framework"
+               BlueprintName = "Service"
                ReferencedContainer = "container:VaporAuth.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -378,9 +182,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Core::COperatingSystem"
-               BuildableName = "COperatingSystem.framework"
-               BlueprintName = "COperatingSystem"
+               BlueprintIdentifier = "SQL::SQL"
+               BuildableName = "SQL.framework"
+               BlueprintName = "SQL"
                ReferencedContainer = "container:VaporAuth.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -392,9 +196,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "swift-nio::NIOWebSocket"
-               BuildableName = "NIOWebSocket.framework"
-               BlueprintName = "NIOWebSocket"
+               BlueprintIdentifier = "WebSocket::WebSocket"
+               BuildableName = "WebSocket.framework"
+               BlueprintName = "WebSocket"
                ReferencedContainer = "container:VaporAuth.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -406,9 +210,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SQLite::CSQLite"
-               BuildableName = "CSQLite.framework"
-               BlueprintName = "CSQLite"
+               BlueprintIdentifier = "swift-nio::CNIOAtomics"
+               BuildableName = "CNIOAtomics.framework"
+               BlueprintName = "CNIOAtomics"
                ReferencedContainer = "container:VaporAuth.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -420,9 +224,65 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "swift-nio::NIO"
-               BuildableName = "NIO.framework"
-               BlueprintName = "NIO"
+               BlueprintIdentifier = "Vapor::Vapor"
+               BuildableName = "Vapor.framework"
+               BlueprintName = "Vapor"
+               ReferencedContainer = "container:VaporAuth.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "swift-nio::CNIOHTTPParser"
+               BuildableName = "CNIOHTTPParser.framework"
+               BlueprintName = "CNIOHTTPParser"
+               ReferencedContainer = "container:VaporAuth.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "Console::Command"
+               BuildableName = "Command.framework"
+               BlueprintName = "Command"
+               ReferencedContainer = "container:VaporAuth.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "Fluent::Fluent"
+               BuildableName = "Fluent.framework"
+               BlueprintName = "Fluent"
+               ReferencedContainer = "container:VaporAuth.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "Core::Bits"
+               BuildableName = "Bits.framework"
+               BlueprintName = "Bits"
                ReferencedContainer = "container:VaporAuth.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -448,9 +308,121 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "swift-nio::NIOConcurrencyHelpers"
+               BuildableName = "NIOConcurrencyHelpers.framework"
+               BlueprintName = "NIOConcurrencyHelpers"
+               ReferencedContainer = "container:VaporAuth.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "swift-nio::NIOFoundationCompat"
+               BuildableName = "NIOFoundationCompat.framework"
+               BlueprintName = "NIOFoundationCompat"
+               ReferencedContainer = "container:VaporAuth.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "swift-nio::CNIOLinux"
+               BuildableName = "CNIOLinux.framework"
+               BlueprintName = "CNIOLinux"
+               ReferencedContainer = "container:VaporAuth.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "Auth::Authentication"
                BuildableName = "Authentication.framework"
                BlueprintName = "Authentication"
+               ReferencedContainer = "container:VaporAuth.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "FluentSQLite::FluentSQLite"
+               BuildableName = "FluentSQLite.framework"
+               BlueprintName = "FluentSQLite"
+               ReferencedContainer = "container:VaporAuth.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "Core::COperatingSystem"
+               BuildableName = "COperatingSystem.framework"
+               BlueprintName = "COperatingSystem"
+               ReferencedContainer = "container:VaporAuth.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "Validation::Validation"
+               BuildableName = "Validation.framework"
+               BlueprintName = "Validation"
+               ReferencedContainer = "container:VaporAuth.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "SQLite::SQLite"
+               BuildableName = "SQLite.framework"
+               BlueprintName = "SQLite"
+               ReferencedContainer = "container:VaporAuth.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "Crypto::Random"
+               BuildableName = "Random.framework"
+               BlueprintName = "Random"
                ReferencedContainer = "container:VaporAuth.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -490,9 +462,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "swift-nio::NIOConcurrencyHelpers"
-               BuildableName = "NIOConcurrencyHelpers.framework"
-               BlueprintName = "NIOConcurrencyHelpers"
+               BlueprintIdentifier = "VaporAuth::App"
+               BuildableName = "App.framework"
+               BlueprintName = "App"
                ReferencedContainer = "container:VaporAuth.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -504,9 +476,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "swift-nio::CNIODarwin"
-               BuildableName = "CNIODarwin.framework"
-               BlueprintName = "CNIODarwin"
+               BlueprintIdentifier = "Core::Core"
+               BuildableName = "Core.framework"
+               BlueprintName = "Core"
                ReferencedContainer = "container:VaporAuth.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -518,9 +490,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "swift-nio::CNIOLinux"
-               BuildableName = "CNIOLinux.framework"
-               BlueprintName = "CNIOLinux"
+               BlueprintIdentifier = "swift-nio::NIOWebSocket"
+               BuildableName = "NIOWebSocket.framework"
+               BlueprintName = "NIOWebSocket"
                ReferencedContainer = "container:VaporAuth.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -532,9 +504,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "WebSocket::WebSocket"
-               BuildableName = "WebSocket.framework"
-               BlueprintName = "WebSocket"
+               BlueprintIdentifier = "Core::Debugging"
+               BuildableName = "Debugging.framework"
+               BlueprintName = "Debugging"
                ReferencedContainer = "container:VaporAuth.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -546,9 +518,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Multipart::Multipart"
-               BuildableName = "Multipart.framework"
-               BlueprintName = "Multipart"
+               BlueprintIdentifier = "HTTP::HTTP"
+               BuildableName = "HTTP.framework"
+               BlueprintName = "HTTP"
+               ReferencedContainer = "container:VaporAuth.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "Fluent::FluentSQL"
+               BuildableName = "FluentSQL.framework"
+               BlueprintName = "FluentSQL"
                ReferencedContainer = "container:VaporAuth.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -574,48 +560,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Console::Command"
-               BuildableName = "Command.framework"
-               BlueprintName = "Command"
-               ReferencedContainer = "container:VaporAuth.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Crypto::libbcrypt"
-               BuildableName = "libbcrypt.framework"
-               BlueprintName = "libbcrypt"
-               ReferencedContainer = "container:VaporAuth.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "swift-nio::CNIOSHA1"
-               BuildableName = "CNIOSHA1.framework"
-               BlueprintName = "CNIOSHA1"
-               ReferencedContainer = "container:VaporAuth.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "Crypto::Crypto"
                BuildableName = "Crypto.framework"
                BlueprintName = "Crypto"
@@ -630,9 +574,65 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "VaporAuth::Run"
-               BuildableName = "Run"
-               BlueprintName = "Run"
+               BlueprintIdentifier = "Console::Logging"
+               BuildableName = "Logging.framework"
+               BlueprintName = "Logging"
+               ReferencedContainer = "container:VaporAuth.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "TemplateKit::TemplateKit"
+               BuildableName = "TemplateKit.framework"
+               BlueprintName = "TemplateKit"
+               ReferencedContainer = "container:VaporAuth.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "swift-nio::NIO"
+               BuildableName = "NIO.framework"
+               BlueprintName = "NIO"
+               ReferencedContainer = "container:VaporAuth.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "URLEncodedForm::URLEncodedForm"
+               BuildableName = "URLEncodedForm.framework"
+               BlueprintName = "URLEncodedForm"
+               ReferencedContainer = "container:VaporAuth.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "swift-nio::CNIOSHA1"
+               BuildableName = "CNIOSHA1.framework"
+               BlueprintName = "CNIOSHA1"
                ReferencedContainer = "container:VaporAuth.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -671,9 +671,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "swift-nio::CNIOHTTPParser"
-            BuildableName = "CNIOHTTPParser.framework"
-            BlueprintName = "CNIOHTTPParser"
+            BlueprintIdentifier = "VaporAuth::Run"
+            BuildableName = "Run"
+            BlueprintName = "Run"
             ReferencedContainer = "container:VaporAuth.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

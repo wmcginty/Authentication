@@ -7,7 +7,6 @@
 
 import Vapor
 import Fluent
-import FluentSQLite
 import Crypto
 import Logging
 
