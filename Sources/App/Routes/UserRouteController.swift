@@ -17,7 +17,7 @@ class UserRouteController: RouteCollection {
     func boot(router: Router) throws {
         let group = router.grouped("api", "users")
         group.post(User.self, at: "login", use: loginUserHandler)
-        group.post(NewUser.self, at: "register", use: registerUserHandler)
+        group.post(User.self, at: "register", use: registerUserHandler)
     }
 }
 
@@ -35,7 +35,7 @@ private extension UserRouteController {
         }
     }
     
-    func registerUserHandler(_ request: Request, newUser: NewUser) throws -> Future<AuthenticationContainer> {
+    func registerUserHandler(_ request: Request, newUser: User) throws -> Future<AuthenticationContainer> {
         return try User.query(on: request).filter(\.email == newUser.email).first().flatMap { existingUser in
             guard existingUser == nil else { throw Abort(.badRequest, reason: "a user with this email already exists" , identifier: nil) }
             
@@ -53,7 +53,7 @@ private extension UserRouteController {
 }
 
 //MARK: NewUser+User
-private extension NewUser {
+private extension User {
         
     func user(with digest: BCryptDigest) throws -> User {
         return try User(id: nil, email: email, password: digest.hash(password))

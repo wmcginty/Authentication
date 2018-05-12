@@ -29,3 +29,15 @@ extension User: BasicAuthenticatable {
 extension User: TokenAuthenticatable {
     typealias TokenType = AccessToken
 }
+
+//MARK: Validatable
+extension User: Validatable {
+    
+    static func validations() throws -> Validations<User> {
+        var validations = Validations(User.self)
+        validations.add(\.email, at: [], .email)
+        validations.add(\.password, at: [], .password)
+        
+        return validations
+    }
+}

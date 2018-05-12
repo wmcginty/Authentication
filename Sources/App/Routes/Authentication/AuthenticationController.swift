@@ -48,7 +48,7 @@ private extension AuthenticationController {
         }
     }
     
-    func existingUser(matching user: NewUser, on connection: DatabaseConnectable) throws -> Future<User?> {
+    func existingUser(matching user: User, on connection: DatabaseConnectable) throws -> Future<User?> {
         return try User.query(on: connection).filter(\.email == user.email).first()
     }
     
