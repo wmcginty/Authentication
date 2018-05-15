@@ -47,7 +47,7 @@ extension AccessToken: BearerAuthenticatable {
 }
 
 //MARK: Authentication.Token
-extension AccessToken: Authentication.Token {
+extension AccessToken: Token {
     
     typealias UserType = User
     static var userIDKey: WritableKeyPath<AccessToken, UUID> = \.userID
