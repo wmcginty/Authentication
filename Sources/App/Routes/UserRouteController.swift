@@ -25,7 +25,7 @@ class UserRouteController: RouteCollection {
 private extension UserRouteController {
     
     func loginUserHandler(_ request: Request, user: User) throws -> Future<AuthenticationContainer> {
-        return try User.query(on: request).filter(\.email == user.email).first().flatMap { existingUser in
+        return User.query(on: request).filter(\.email == user.email).first().flatMap { existingUser in
             guard let existingUser = existingUser else { throw Abort(.badRequest, reason: "this user does not exist" , identifier: nil) }
             
             let digest = try request.make(BCryptDigest.self)
@@ -36,7 +36,7 @@ private extension UserRouteController {
     }
     
     func registerUserHandler(_ request: Request, newUser: User) throws -> Future<AuthenticationContainer> {
-        return try User.query(on: request).filter(\.email == newUser.email).first().flatMap { existingUser in
+        return User.query(on: request).filter(\.email == newUser.email).first().flatMap { existingUser in
             guard existingUser == nil else { throw Abort(.badRequest, reason: "a user with this email already exists" , identifier: nil) }
             
             try newUser.validate()

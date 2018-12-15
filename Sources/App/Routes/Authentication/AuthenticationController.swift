@@ -30,7 +30,7 @@ struct AuthenticationController {
     }
     
     func revokeTokens(forEmail email: String, on connection: DatabaseConnectable) throws -> Future<Void> {
-        return try User.query(on: connection).filter(\.email == email).first().flatMap { user in
+        return User.query(on: connection).filter(\.email == email).first().flatMap { user in
             guard let user = user else { return Future.map(on: connection) { Void() } }
             return try self.removeAllTokens(for: user, on: connection)
         }
@@ -42,20 +42,21 @@ private extension AuthenticationController {
     
     //MARK: Queries
     func existingUser(matchingTokenString tokenString: RefreshToken.Token, on connection: DatabaseConnectable) throws -> Future<User?> {
-        return try RefreshToken.query(on: connection).filter(\.tokenString == tokenString).first().flatMap { token in
+        return RefreshToken.query(on: connection).filter(\.tokenString == tokenString).first().flatMap { token in
             guard let token = token else { throw Abort(.notFound /* token not found */) }
-            return try User.query(on: connection).filter(\.id == token.userID).first()
+            return User.query(on: connection).filter(\.id == token.userID).first()
         }
     }
     
     func existingUser(matching user: User, on connection: DatabaseConnectable) throws -> Future<User?> {
-        return try User.query(on: connection).filter(\.email == user.email).first()
+        return User.query(on: connection).filter(\.email == user.email).first()
     }
     
     //MARK: Cleanup
     func removeAllTokens(for user: User, on connection: DatabaseConnectable) throws -> Future<Void> {
-        let accessTokens = try AccessToken.query(on: connection).filter(\.userID == user.id).delete()
-        let refreshToken = try RefreshToken.query(on: connection).filter(\.userID == user.id).delete()
+        guard let userID = user.id else { return Future.done(on: connection) }
+        let accessTokens = AccessToken.query(on: connection).filter(\.userID == userID).delete()
+        let refreshToken = RefreshToken.query(on: connection).filter(\.userID == userID).delete()
         
         return map(to: Void.self, accessTokens, refreshToken) { _, _ in Void() }
     }
