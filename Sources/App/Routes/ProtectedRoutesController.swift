@@ -5,23 +5,19 @@
 //  Created by William McGinty on 4/30/18.
 //
 
-import Foundation
 import Vapor
-import Authentication
 import Crypto
+import Fluent
 
 struct ProtectedRoutesController: RouteCollection {
     
-    func boot(router: Router) throws {
-        let group = router.grouped("api", "protected")
+    func boot(routes: RoutesBuilder) throws {
+        let group = routes.grouped("api", "protected")
         
-        let basicAuthMiddleware = User.basicAuthMiddleware(using: BCrypt)
-        let guardAuthMiddleware = User.guardAuthMiddleware()
-        let basicAuthGroup = group.grouped([basicAuthMiddleware, guardAuthMiddleware])
+        let basicAuthGroup = group.grouped([User.authenticator(), User.guardMiddleware()])
         basicAuthGroup.get("basic", use: basicAuthRouteHandler)
         
-        let tokenAuthMiddleware = User.tokenAuthMiddleware()
-        let tokenAuthGroup = group.grouped([tokenAuthMiddleware, guardAuthMiddleware])
+        let tokenAuthGroup = group.grouped([AccessToken.authenticator(), AccessToken.guardMiddleware()])
         tokenAuthGroup.get("token", use: tokenAuthRouteHandler)
     }
 }
@@ -30,10 +26,10 @@ struct ProtectedRoutesController: RouteCollection {
 private extension ProtectedRoutesController {
     
     func basicAuthRouteHandler(_ request: Request) throws -> User {
-        return try request.requireAuthenticated(User.self)
+        return try request.auth.require()
     }
     
     func tokenAuthRouteHandler(_ request: Request) throws -> User {
-        return try request.requireAuthenticated(User.self)
+        return try request.auth.require()
     }
 }

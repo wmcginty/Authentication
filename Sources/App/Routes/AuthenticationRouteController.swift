@@ -7,34 +7,31 @@
 
 import Foundation
 import Vapor
-import Fluent
+import FluentSQLiteDriver
 import Crypto
-import Authentication
 
 struct AuthenticationRouteController: RouteCollection {
     
     private let authController = AuthenticationController()
     
-    func boot(router: Router) throws {
-        let group = router.grouped("api", "token")
-        group.post(RefreshTokenContainer.self, at: "refresh", use: refreshAccessTokenHandler)
+    func boot(routes: RoutesBuilder) throws {
+        let group = routes.grouped("api", "token")
+        group.post(RefreshTokenContainer.self, path: "refresh", use: refreshAccessTokenHandler)
         
-        let basicAuthMiddleware = User.basicAuthMiddleware(using: BCrypt)
-        let guardAuthMiddleware = User.guardAuthMiddleware()
-        let basicAuthGroup = group.grouped([basicAuthMiddleware, guardAuthMiddleware])
-        basicAuthGroup.post(UserEmailContainer.self, at: "revoke", use: accessTokenRevocationhandler)
+        let basicAuthGroup = group.grouped([User.authenticator(), User.guardMiddleware()])
+        basicAuthGroup.post(UserEmailContainer.self, path: "revoke", use: accessTokenRevocationhandler)
     }
 }
 
 //MARK: Helper
 private extension AuthenticationRouteController {
     
-    func refreshAccessTokenHandler(_ request: Request, container: RefreshTokenContainer) throws -> Future<AuthenticationContainer> {
-        return try authController.authenticationContainer(for: container.refreshToken, on: request)
+    func refreshAccessTokenHandler(_ request: Request, container: RefreshTokenContainer) throws -> EventLoopFuture<AuthenticationContainer> {
+        return try authController.authenticationContainer(for: container.refreshToken, on: request.db)
     }
     
-    func accessTokenRevocationhandler(_ request: Request, container: UserEmailContainer) throws -> Future<HTTPResponseStatus> {
-        return try authController.revokeTokens(forEmail: container.email, on: request).transform(to: .noContent)
+    func accessTokenRevocationhandler(_ request: Request, container: UserEmailContainer) throws -> EventLoopFuture<HTTPResponseStatus> {
+        return try authController.revokeTokens(forEmail: container.email, on: request.db).transform(to: .noContent)
     }
 }
 

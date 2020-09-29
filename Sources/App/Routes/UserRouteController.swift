@@ -6,7 +6,6 @@
 //
 
 import Vapor
-import Fluent
 import Crypto
 import Logging
 
@@ -14,48 +13,28 @@ class UserRouteController: RouteCollection {
     
     private let authController = AuthenticationController()
     
-    func boot(router: Router) throws {
-        let group = router.grouped("api", "users")
-        group.post(User.self, at: "login", use: loginUserHandler)
-        group.post(User.self, at: "register", use: registerUserHandler)
+    func boot(routes: RoutesBuilder) throws {
+        let group = routes.grouped("api", "users")
+        
+        let basicAuthenticated = group.grouped([User.authenticator(), User.guardMiddleware()])
+        basicAuthenticated.get("login", use: loginUserHandler)
+        
+        group.post(User.self, path: "register", use: registerUserHandler)
     }
 }
 
 //MARK: Helper
 private extension UserRouteController {
     
-    func loginUserHandler(_ request: Request, user: User) throws -> Future<AuthenticationContainer> {
-        return User.query(on: request).filter(\.email == user.email).first().flatMap { existingUser in
-            guard let existingUser = existingUser else { throw Abort(.badRequest, reason: "this user does not exist" , identifier: nil) }
-            
-            let digest = try request.make(BCryptDigest.self)
-            guard try digest.verify(user.password, created: existingUser.password) else { throw Abort(.badRequest) /* authentication failure */ }
-            
-            return try self.authController.authenticationContainer(for: existingUser, on: request)
-        }
+    func loginUserHandler(_ request: Request) throws -> EventLoopFuture<AuthenticationContainer> {
+        return try authController.authenticationContainer(for: request.auth.require(), on: request.db)
     }
     
-    func registerUserHandler(_ request: Request, newUser: User) throws -> Future<AuthenticationContainer> {
-        return User.query(on: request).filter(\.email == newUser.email).first().flatMap { existingUser in
-            guard existingUser == nil else { throw Abort(.badRequest, reason: "a user with this email already exists" , identifier: nil) }
-            
-            try newUser.validate()
-            
-            return try newUser.user(with: request.make(BCryptDigest.self)).save(on: request).flatMap { user in
-                
-                let logger = try request.make(Logger.self)
-                logger.warning("New user created: \(user.email)")
-                
-                return try self.authController.authenticationContainer(for: user, on: request)
+    func registerUserHandler(_ request: Request, registrant: User) throws -> EventLoopFuture<AuthenticationContainer> {
+        return User.ensureUniqueness(for: registrant, on: request).throwingFlatMap {
+            return try registrant.hashingPassword().saveAndReturn(on: request.db).throwingFlatMap { user in
+                return try self.authController.authenticationContainer(for: user, on: request.db)
             }
         }
-    }
-}
-
-//MARK: NewUser+User
-private extension User {
-        
-    func user(with digest: BCryptDigest) throws -> User {
-        return try User(id: nil, email: email, password: digest.hash(password))
     }
 }

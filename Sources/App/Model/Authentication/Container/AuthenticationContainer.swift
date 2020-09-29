@@ -11,9 +11,9 @@ import Vapor
 struct AuthenticationContainer: Content {
     
     //MARK: Properties
-    let accessToken: AccessToken.Token
+    let accessToken: String
     let expiresIn: TimeInterval
-    let refreshToken: RefreshToken.Token
+    let refreshToken: String
     
     //MARK: Initializers
     init(accessToken: AccessToken, refreshToken: RefreshToken) {
@@ -33,7 +33,7 @@ struct AuthenticationContainer: Content {
 struct RefreshTokenContainer: Content {
     
     //MARK: Properties
-    let refreshToken: RefreshToken.Token
+    let refreshToken: String
     
     private enum CodingKeys: String, CodingKey {
         case refreshToken = "refresh_token"

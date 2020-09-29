@@ -5,50 +5,66 @@
 //  Created by William McGinty on 3/22/18.
 //
 
-import Foundation
 import Vapor
-import FluentSQLite
+import Fluent
+import FluentSQLiteDriver
 import Crypto
-import Authentication
 
-struct AccessToken: Content, SQLiteUUIDModel, Migration {
-    typealias Token = String
-    
+final class AccessToken: Content, Model {
+    static let schema: String = "access_tokens"
+
     //MARK: Constants
-    static let accessTokenExpirationInterval: TimeInterval = 3600
+    static let accessTokenExpirationInterval: TimeInterval = 3600 * 6
     
     //MARK: Properties
+    @ID(key: .id)
     var id: UUID?
-    private(set) var tokenString: Token
-    private(set) var userID: UUID
-    let expiryTime: Date
+    
+    @Field(key: "token_string")
+    var tokenString: String
+    
+    @Parent(key: "user_id")
+    var user: User
+    
+    @Field(key: "expiry")
+    var expiryDate: Date
     
     //MARK: Initializers
-    init(userID: UUID) throws {
-        self.tokenString = try CryptoRandom().generateData(count: 32).base64URLEncodedString()
-        self.userID = userID
-        self.expiryTime = Date().addingTimeInterval(AccessToken.accessTokenExpirationInterval)
+    init() { /* No op */ }
+ 
+    init(user: User) throws {
+        self.tokenString = Data([UInt8].random(count: 32)).base64EncodedString()
+        self.expiryDate = Date().addingTimeInterval(AccessToken.accessTokenExpirationInterval)
+        self.$user.id = try user.requireID()
     }
 }
 
-//MARK: BearerAuthenticatable
-extension AccessToken: BearerAuthenticatable {
+// MARK: Migration
+extension AccessToken {
     
-    static let tokenKey: WritableKeyPath<AccessToken, String> = \.tokenString
-    
-    public static func authenticate(using bearer: BearerAuthorization, on connection: DatabaseConnectable) -> Future<AccessToken?> {
-        return Future.flatMap(on: connection) {
-            return AccessToken.query(on: connection).filter(tokenKey == bearer.token).first().map { token in
-                guard let token = token, token.expiryTime > Date() else { return nil }
-                return token
-            }
+    struct Migration: Fluent.Migration {
+        let name: String = AccessToken.schema
+        
+        func prepare(on database: Database) -> EventLoopFuture<Void> {
+            return database.schema(AccessToken.schema)
+                .id()
+                .field("token_string", .string, .required)
+                .field("user_id", .uuid, .required, .references("users", "id"))
+                .field("expiry", .datetime, .required)
+                .create()
+        }
+        
+        func revert(on database: Database) -> EventLoopFuture<Void> {
+            return database.schema(AccessToken.schema).delete()
         }
     }
 }
 
-//MARK: Authentication.Token
-extension AccessToken: Token {
+// MARK: ModelTokenAuthenticatable
+extension AccessToken: ModelTokenAuthenticatable {
     
-    typealias UserType = User
-    static var userIDKey: WritableKeyPath<AccessToken, UUID> = \.userID
+    static var userKey: KeyPath<AccessToken, Parent<User>> = \.$user
+    static var valueKey: KeyPath<AccessToken, Field<String>> = \.$tokenString
+    
+    var isValid: Bool { return expiryDate > Date() }
 }
