@@ -5,7 +5,6 @@
 //  Created by William McGinty on 3/22/18.
 //
 
-import Foundation
 import Vapor
 
 struct AuthenticationContainer: Content {

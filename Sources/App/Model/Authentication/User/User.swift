@@ -5,10 +5,8 @@
 //  Created by William McGinty on 3/21/18.
 //
 
-import Foundation
 import Vapor
 import Fluent
-import FluentSQLiteDriver
 
 final class User: Content, Model, Authenticatable {
     static let schema: String = "users"
@@ -41,11 +39,11 @@ final class User: Content, Model, Authenticatable {
 // MARK: Migration
 extension User {
     
-    struct Migration: Fluent.Migration {
+    struct Migration: Fluent.AsyncMigration {
         let name = User.schema
         
-        func prepare(on database: Database) -> EventLoopFuture<Void> {
-            return database.schema(User.schema)
+        func prepare(on database: Database) async throws {
+            return try await database.schema(User.schema)
                 .id()
                 .field("email", .string, .required)
                 .unique(on: "email")
@@ -53,8 +51,8 @@ extension User {
                 .create()
         }
         
-        func revert(on database: Database) -> EventLoopFuture<Void> {
-            return database.schema(User.schema).delete()
+        func revert(on database: Database) async throws {
+            return try await database.schema(User.schema).delete()
         }
     }
 }
@@ -69,25 +67,6 @@ extension User: ModelAuthenticatable {
         return try Bcrypt.verify(password, created: self.password)
     }
 }
-//
-////MARK: Validatable
-//extension User: Validatable {
-//
-//    static func validations(_ validations: inout Validations) {
-//       // var validations = Validations(User.self)
-//        validations.
-//        validations.add(\.email, at: [], .email)
-//        validations.add(\.password, at: [], .password)
-//    }
-//
-//    static func validations() throws -> Validations<User> {
-//        var validations = Validations(User.self)
-//        validations.add(\.email, at: [], .email)
-//        validations.add(\.password, at: [], .password)
-//
-//        return validations
-//    }
-//}
 
 // MARK: Registration / Authentication Helpers
 extension User {
@@ -96,13 +75,12 @@ extension User {
         return "\(first).\(last)-\(Date().timeIntervalSince1970)".lowercased()
     }
     
-    static func uniqueness(forEmail email: String, on request: Request) -> EventLoopFuture<Bool> {
-        return User.isExisting(matching: \.$email == email, on: request.db)
+    static func uniqueness(forEmail email: String, on request: Request) async throws -> Bool {
+        return try await User.isExisting(matching: \.$email == email, on: request.db)
     }
     
-    static func ensureUniqueness(for registrant: User, on request: Request) -> EventLoopFuture<Void> {
-         return User.uniqueness(forEmail: registrant.email, on: request).flatMapThrowing {
-             guard $0 else { throw Abort(.badRequest, reason: "A user with this email or username already exists") }
-         }
-     }
+    static func ensureUniqueness(for registrant: User, on request: Request) async throws {
+        let unique = try await User.uniqueness(forEmail: registrant.email, on: request)
+        guard unique else { throw Abort(.badRequest, reason: "A user with this email or username already exists") }
+    }
 }

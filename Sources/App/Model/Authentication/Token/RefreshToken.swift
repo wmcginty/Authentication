@@ -5,10 +5,8 @@
 //  Created by William McGinty on 3/22/18.
 //
 
-import Foundation
 import Vapor
 import Fluent
-import FluentSQLiteDriver
 import Crypto
 
 final class RefreshToken: Content, Model {
@@ -37,19 +35,19 @@ final class RefreshToken: Content, Model {
 // MARK: Migration
 extension RefreshToken {
     
-    struct Migration: Fluent.Migration {
+    struct Migration: Fluent.AsyncMigration {
         let name = RefreshToken.schema
         
-        func prepare(on database: Database) -> EventLoopFuture<Void> {
-            return database.schema(RefreshToken.schema)
+        func prepare(on database: Database) async throws {
+            return try await database.schema(RefreshToken.schema)
                 .id()
                 .field("token_string", .string, .required)
                 .field("user_id", .uuid, .required, .references("users", "id"))
                 .create()
         }
         
-        func revert(on database: Database) -> EventLoopFuture<Void> {
-            return database.schema(RefreshToken.schema).delete()
+        func revert(on database: Database) async throws {
+            return try await database.schema(RefreshToken.schema).delete()
         }
     }
 }
