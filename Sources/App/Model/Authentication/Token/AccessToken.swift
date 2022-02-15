@@ -7,8 +7,6 @@
 
 import Vapor
 import Fluent
-import FluentSQLiteDriver
-import Crypto
 
 final class AccessToken: Content, Model {
     static let schema: String = "access_tokens"
@@ -42,11 +40,11 @@ final class AccessToken: Content, Model {
 // MARK: Migration
 extension AccessToken {
     
-    struct Migration: Fluent.Migration {
+    struct Migration: Fluent.AsyncMigration {
         let name: String = AccessToken.schema
         
-        func prepare(on database: Database) -> EventLoopFuture<Void> {
-            return database.schema(AccessToken.schema)
+        func prepare(on database: Database) async throws {
+            return try await database.schema(AccessToken.schema)
                 .id()
                 .field("token_string", .string, .required)
                 .field("user_id", .uuid, .required, .references("users", "id"))
@@ -54,8 +52,8 @@ extension AccessToken {
                 .create()
         }
         
-        func revert(on database: Database) -> EventLoopFuture<Void> {
-            return database.schema(AccessToken.schema).delete()
+        func revert(on database: Database) async throws {
+            return try await database.schema(AccessToken.schema).delete()
         }
     }
 }

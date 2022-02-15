@@ -5,10 +5,7 @@
 //  Created by William McGinty on 3/25/18.
 //
 
-import Foundation
 import Vapor
-import FluentSQLiteDriver
-import Crypto
 
 struct AuthenticationRouteController: RouteCollection {
     
@@ -26,12 +23,13 @@ struct AuthenticationRouteController: RouteCollection {
 //MARK: Helper
 private extension AuthenticationRouteController {
     
-    func refreshAccessTokenHandler(_ request: Request, container: RefreshTokenContainer) throws -> EventLoopFuture<AuthenticationContainer> {
-        return try authController.authenticationContainer(for: container.refreshToken, on: request.db)
+    func refreshAccessTokenHandler(_ request: Request, container: RefreshTokenContainer) async throws -> AuthenticationContainer {
+        return try await authController.authenticationContainer(for: container.refreshToken, on: request.db)
     }
     
-    func accessTokenRevocationhandler(_ request: Request, container: UserEmailContainer) throws -> EventLoopFuture<HTTPResponseStatus> {
-        return try authController.revokeTokens(forEmail: container.email, on: request.db).transform(to: .noContent)
+    func accessTokenRevocationhandler(_ request: Request, container: UserEmailContainer) async throws -> HTTPStatus {
+        try await authController.revokeTokens(forEmail: container.email, on: request.db)
+        return .ok
     }
 }
 

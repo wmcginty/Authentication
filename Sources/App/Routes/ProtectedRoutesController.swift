@@ -6,8 +6,6 @@
 //
 
 import Vapor
-import Crypto
-import Fluent
 
 struct ProtectedRoutesController: RouteCollection {
     

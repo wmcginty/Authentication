@@ -6,8 +6,6 @@
 //
 
 import Vapor
-import Crypto
-import Logging
 
 class UserRouteController: RouteCollection {
     
@@ -26,15 +24,15 @@ class UserRouteController: RouteCollection {
 //MARK: Helper
 private extension UserRouteController {
     
-    func loginUserHandler(_ request: Request) throws -> EventLoopFuture<AuthenticationContainer> {
-        return try authController.authenticationContainer(for: request.auth.require(), on: request.db)
+    func loginUserHandler(_ request: Request) async throws -> AuthenticationContainer {
+        return try await authController.authenticationContainer(for: request.auth.require(), on: request.db)
     }
     
-    func registerUserHandler(_ request: Request, registrant: User) throws -> EventLoopFuture<AuthenticationContainer> {
-        return User.ensureUniqueness(for: registrant, on: request).throwingFlatMap {
-            return try registrant.hashingPassword().saveAndReturn(on: request.db).throwingFlatMap { user in
-                return try self.authController.authenticationContainer(for: user, on: request.db)
-            }
-        }
+    func registerUserHandler(_ request: Request, registrant: User) async throws -> AuthenticationContainer {
+        try await User.ensureUniqueness(for: registrant, on: request)
+        
+        let user = try registrant.hashingPassword()
+        try await user.save(on: request.db)
+        return try await authController.authenticationContainer(for: user, on: request.db)
     }
 }

@@ -14,10 +14,12 @@ extension RoutesBuilder {
     }
     
     @discardableResult
-    func post<T: Content, Response: ResponseEncodable>(_ contentType: T.Type, path: PathComponent..., use: @escaping (Request, T) throws -> Response) -> Route {
+    func post<T: Content, Response: AsyncResponseEncodable>(_ contentType: T.Type,
+                                                            path: PathComponent...,
+                                                            use: @escaping (Request, T) async throws -> Response) -> Route {
         return post(path) { request -> Response in
             let content = try request.content.decode(T.self)
-            return try use(request, content)
+            return try await  use(request, content)
         }
     }
 }
