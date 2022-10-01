@@ -35,17 +35,26 @@ extension AppViewModel {
 
     func loadPersisted() {
         let persistedUser = authenticationSessionService.currentUser
-//        guard let userID = authenticationSessionService.currentUser?.appleUserID else {
+        handleChange(to: persistedUser)
+    }
+    
+    func reverifySignInWithAppleCredential() {
+        let persistedUser = authenticationSessionService.currentUser
+        guard let userID = persistedUser?.appleUserID else {
             return handleChange(to: persistedUser)
-//        }
+        }
         
-//        let provider = ASAuthorizationAppleIDProvider()
-//        provider.getCredentialState(forUserID: userID) { [weak self] state, error in
-//            switch state {
-//            case .authorized: self?.handleChange(to: persistedUser)
-//            default: self?.handleChange(to: nil)
-//            }
-//        }
+        Task { @MainActor in
+            let provider = ASAuthorizationAppleIDProvider()
+            let credentialState = try? await provider.credentialState(forUserID: userID)
+            
+            /* This should probably be a bit more granular, but the service likes to return .notFound (or an error) immediately
+             after Signing in with Apple, which would then see then logged back out immediately. */
+            switch credentialState {
+            case .revoked: self.handleChange(to: nil)
+            default: self.handleChange(to: persistedUser)
+            }
+        }
     }
 }
 

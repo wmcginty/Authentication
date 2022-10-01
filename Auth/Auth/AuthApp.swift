@@ -18,6 +18,7 @@ struct AuthApp: App {
                 ContentView(viewModel: viewModel)
                     .task { viewModel.loadPersisted() }
             }
+            .task { viewModel.reverifySignInWithAppleCredential() }
         }
     }
 }

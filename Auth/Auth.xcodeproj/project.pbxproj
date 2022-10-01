@@ -73,6 +73,7 @@
 			children = (
 				B4F9689728E6933B008C5C30 /* Info.plist */,
 				B4F9687C28E68ED3008C5C30 /* AuthApp.swift */,
+				B4F968B328E6AAEE008C5C30 /* AppViewModel.swift */,
 				B4F9688D28E690E9008C5C30 /* Views */,
 				B4F9689128E69120008C5C30 /* Model */,
 				B4F9688E28E690EF008C5C30 /* Services */,
@@ -114,7 +115,6 @@
 		B4F9689128E69120008C5C30 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B4F968B328E6AAEE008C5C30 /* AppViewModel.swift */,
 				B4F9689A28E69F3C008C5C30 /* User.swift */,
 				B4F968AF28E6A898008C5C30 /* Endpoint.swift */,
 			);

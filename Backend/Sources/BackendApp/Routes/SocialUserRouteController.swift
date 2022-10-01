@@ -41,6 +41,14 @@ private extension SocialUserRouteController {
 // MARK: - Verification Helper
 private extension SocialUserRouteController {
     
+    /*
+     1. Verify the JWSE256 signature using Apple's public key
+     2. Verify the nonce created and sent by the client
+     3. Verify that the iss field contains `https://appleid.apple.com`
+     4. Verify that the aud field is the bundle ID of the client app
+     5. Verify the JWT has not expired
+     */
+    
     func verify(registrant: SocialUser.Registrant, using keys: JWKS) async throws -> SocialUser.VerificationPayload {
         let signers = JWTSigners()
         try signers.use(jwks: keys)
