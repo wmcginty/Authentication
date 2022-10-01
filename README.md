@@ -34,7 +34,7 @@ Requires iOS 16.0, macOS 12.0, Vapor 4, PostgreSQL 14, Xcode 14
 
 ## Installation
 
-After cloning the project and opening the workspace, Swift Package Manager will automatically resolve the necessary dependencies. At this point, two schemes should be available. `Auth` is the front-end application and should be fairly straightforward to run. `RunBackend` is the backend Vapor server, and running this scheme will start the server (by default at `localhost:8080`).
+After cloning the project and opening the workspace, Swift Package Manager will automatically resolve the necessary dependencies. At this point, two schemes should be available. `Auth` is the front-end application and should only require an update to the bundle identifier to run properly (but keep in mind that `SocialUser.VerificationPayload` will need that change as well to correctly verify the identity the token). `Backend` is the backend Vapor server, and running this scheme will start the server (by default at `localhost:8080`).
 
 Note that a PostgreSQL database with the name `auth` is required to run the server properly. The recommended way to install PostgreSQL is to use [Postgres.app](https://postgresapp.com) to install PostgreSQL 14. Note that by default, the `psql` process will not start automatically - it must be `initialized` and `started` from inside the application (though, there are settings to both automatically start the Postgres app and the `psql` process on login to simplify this process). Note, that if you also have `psql` installed through Homebrew, this will likely conflict as both process cannot use Port 5432 (the default PostgreSQL port) at the same time.
 
