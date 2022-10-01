@@ -6,7 +6,7 @@ on:
   pull_request:
 
 jobs:
-  Build:
+  Backend:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -14,7 +14,7 @@ jobs:
         name: ["macOS", "Linux"]
         include:
           - name: "macOS"
-            os: "macos-latest"
+            os: "macos-12"
           
           - name: "Linux"
             os: "ubuntu-latest"
@@ -22,5 +22,32 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     
-    - name: Build and Test
-      run: swift build -c release
+    - name: Build Backend
+      run: |
+        cd Backend
+        swift build -c release
+        
+  App:
+    runs-on: ${{ matrix.os }}
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_14.0.1.app/Contents/Developer
+    strategy:
+      fail-fast: false
+      matrix:
+        name: ["macOS"]
+        include:
+          - name: "macOS"
+            os: "macos-12"
+            
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    
+    - name: Build App
+      run: >
+          xcodebuild \
+            -workspace "Auth.xcworkspace" \
+            -scheme "Auth" \
+            -destination "platform=iOS Simulator,OS=16.0,name=iPhone 13 Pro" \
+            ONLY_ACTIVE_ARCH=NO || exit 1
+        
