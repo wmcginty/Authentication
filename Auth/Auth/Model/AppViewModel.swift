@@ -35,17 +35,17 @@ extension AppViewModel {
 
     func loadPersisted() {
         let persistedUser = authenticationSessionService.currentUser
-        guard let userID = authenticationSessionService.currentUser?.appleUserID else {
+//        guard let userID = authenticationSessionService.currentUser?.appleUserID else {
             return handleChange(to: persistedUser)
-        }
+//        }
         
-        let provider = ASAuthorizationAppleIDProvider()
-        provider.getCredentialState(forUserID: userID) { [weak self] state, error in
-            switch state {
-            case .authorized: self?.handleChange(to: persistedUser)
-            default: self?.handleChange(to: nil)
-            }
-        }
+//        let provider = ASAuthorizationAppleIDProvider()
+//        provider.getCredentialState(forUserID: userID) { [weak self] state, error in
+//            switch state {
+//            case .authorized: self?.handleChange(to: persistedUser)
+//            default: self?.handleChange(to: nil)
+//            }
+//        }
     }
 }
 
