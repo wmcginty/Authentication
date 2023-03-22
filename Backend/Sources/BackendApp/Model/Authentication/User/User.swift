@@ -57,6 +57,7 @@ extension User {
                 .field("email", .string, .required)
                 .unique(on: "email")
                 .field("password", .string, .required)
+                .field("social_id", .string)
                 .create()
         }
         
@@ -85,7 +86,7 @@ extension User {
     }
     
     static func uniqueness(forEmail email: String, on request: Request) async throws -> Bool {
-        return try await User.isExisting(matching: \.$email == email, on: request.db)
+        return try await !User.isExisting(matching: \.$email == email, on: request.db)
     }
     
     static func ensureUniqueness(for registrant: User, on request: Request) async throws {
