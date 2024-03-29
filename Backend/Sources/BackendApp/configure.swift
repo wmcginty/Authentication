@@ -21,6 +21,6 @@ public func configure(_ app: Application) throws {
 fileprivate extension Environment {
     
     static func postgresConfiguration() -> DatabaseConfigurationFactory {
-        return DatabaseConfigurationFactory.postgres(hostname: "localhost", port: 5432, username: "postgres", password: "", database: "auth")
+        return .postgres(configuration: .init(hostname: "localhost", port: 5432, username: "postgres", password: "", database: "auth", tls: .disable), encodingContext: .default, decodingContext: .default)
     }
 }

@@ -5,10 +5,10 @@ let package = Package(
     name: "BackendApp",
     platforms: [.macOS(.v12)],
     dependencies: [
-        .package(url: "https://github.com/vapor/vapor.git", from: "4.0.0"),
-        .package(url: "https://github.com/vapor/fluent.git", from: "4.0.0"),
-        .package(url: "https://github.com/vapor/fluent-postgres-driver.git", from: "2.0.0"),
-        .package(url: "https://github.com/apple/swift-crypto.git", from: "1.0.0"),
+        .package(url: "https://github.com/vapor/vapor.git", from: "4.92.5"),
+        .package(url: "https://github.com/vapor/fluent.git", from: "4.9.0"),
+        .package(url: "https://github.com/vapor/fluent-postgres-driver.git", from: "2.8.0"),
+        .package(url: "https://github.com/apple/swift-crypto.git", from: "3.0.0"),
         .package(url: "https://github.com/vapor/jwt-kit", from: "4.7.0")
     ],
     targets: [
